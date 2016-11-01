@@ -30,6 +30,8 @@ public:
 
 // Loads slot data.  if you don't define this, the base class's method is used
   virtual Int_t LoadSlot(THaSlotData *sldat,  const UInt_t *evbuffer, const UInt_t *pstop );
+  virtual Int_t LoadSlot(THaSlotData *sldat, const UInt_t* evbuffer, Int_t pos, Int_t len);
+
 
 private:
 

@@ -126,6 +126,11 @@ Int_t Caen1190Module::LoadSlot(THaSlotData *sldat, const UInt_t* evbuffer, const
  
   return fWordsSeen;
 }
+Int_t Caen1190Module::LoadSlot(THaSlotData *sldat, const UInt_t *evbuffer, Int_t pos, Int_t len) {
+  const UInt_t *newevbuffer = &evbuffer[pos];
+  const UInt_t *pstop = &evbuffer[pos+len-1];
+  return LoadSlot(sldat, newevbuffer, pstop);
+}
 
 Int_t Caen1190Module::GetData(Int_t chan, Int_t hit) const {
   if(hit >= fNumHits[chan]) return 0;
