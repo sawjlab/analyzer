@@ -332,6 +332,21 @@ void THaSlotData::print() const
     cout << endl;
   }
   for (i=k; i<getNumRaw(); i++) cout << getRawData(i) << "  ";
+  //
+  cout << "Hits per channel" << dec << " " << numchanhit << endl;
+  for(i=0;i<numchanhit;i++) {
+    cout << chanlist[i] << ": " << numHits[chanlist[i]] << endl;
+  }
+  cout << "idxlist" << dec << endl;
+  Int_t numchanswithhits=0;
+  for (chan=0; chan<(int)maxc; chan++) {
+    cout << chan << ": " << idxlist[chan] << " " << dataindex[idxlist[chan]] << " " << getNumHits(chan) << endl;
+    if(numHits[chan] > 0) {
+      numchanswithhits++;
+    }
+  }
+  cout << numchanswithhits<< "Channels have hits" << hex << endl;
+  //
   first = true;
   ios_base::fmtflags fmt = cout.flags();
   for (chan=0; chan<(int)maxc; chan++) {

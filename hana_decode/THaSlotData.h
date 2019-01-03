@@ -159,6 +159,10 @@ int THaSlotData::getData(int chan, int hit) const {
   if (chan < 0 || chan >= (int)maxc || numHits[chan]<=hit || hit<0 )
     return 0;
   int index = dataindex[idxlist[chan]+hit];
+  if(index>= (int)numraw) {
+    std::cout << crate << "/" << slot << "/" << chan << "/" << hit << " " << idxlist[chan] << " " << index << " " << numraw << std::endl;
+    if(chan==33) {   print(); }    
+  }
   assert(index >= 0 && index < (int)numraw);
   if (index >= 0 && index < (int)numraw) return data[index];
   return 0;
